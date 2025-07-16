@@ -63,14 +63,32 @@
     {
       "id": "11",
       "name": "dancepad",
-      "alias": "",
+      "alias": "Danging Mat, Dancemat",
       "description": "Used for band games such as Dance Dance Revolution"
     },
     {
-      "id": "11",
+      "id": "12",
       "name": "microphone",
       "alias": "",
-      "description": "Used for band games such as Disney's Sing It"
+      "description": "Used for band games such as Disney's Sing It & Rock Band 3"
+    },
+    {
+      "id": "13",
+      "name": "wiispeak",
+      "alias": "",
+      "description": "microphone for Wii Speak Channel. A downloadable Wii Channel that allowed users to chat with friends online using the Wii Speak microphone accessory. discontinued in 2014. However, it has been unofficially re-released for use with homebrew projects like RiiConnect24 and Wiimmfi. "
+    },
+    {
+      "id": "14",
+      "name": "keyboard",
+      "alias": "",
+      "description": "The Logitech Cordless Keyboard for Wii provides special system keys -- such as Zoom In/Out, Forward/Back, Quit and OK -- making it even easier to use your favorite game console to communicate with your friends, surf the Web, read the news, check the weather, browse Internet videos and send e-mail."
+    },
+    {
+      "id": "14",
+      "name": "udraw",
+      "alias": "",
+      "description": "The uDraw GameTablet is a gaming graphics tablet released by THQ for the Wii in 2010. It has a pressure-sensitive stylus which allows users to draw and view their creations on screen. The tablet is motion-sensitive through either the Wii Remote or internal accelerometers, which lets users tilt and roll the tablet for various changes in gameplay. Used for uDraw Studio"
     }
   ]
 }
