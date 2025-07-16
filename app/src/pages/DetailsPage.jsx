@@ -18,13 +18,13 @@ const DetailsPage = () => {
 
   return (
     <div>
-      <h1>{game.title}</h1>
+      <h3>{game.title}</h3>
       <img src={`/2D_covers/${game.gameId}.png`} alt={game.title} style={{ width: 200 }} />
-      <p>{game.summary}</p>
+      <p><strong>Summary:</strong> <br /><br />{game.summary}</p>
       <p><strong>Genre:</strong> {game.genre}</p>
-      <p><strong>Max spelers:</strong> {game.maxPlayers}</p>
-      <p><strong>Jaar:</strong> {game.releaseYear}</p>
-      <p><strong>In collectie:</strong> {game.inLibrary ? 'Ja' : 'Nee'}</p>
+      <p><strong>Maximum local players:</strong> {game.maxPlayers}</p>
+      <p><strong>Release year:</strong> {game.releaseYear}</p>
+      <p><strong>In library:</strong> {game.inLibrary ? 'Ja' : 'Nee'}</p>
     </div>
   );
 };
