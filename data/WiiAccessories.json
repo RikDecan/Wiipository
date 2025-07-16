@@ -1,0 +1,76 @@
+{
+  "WiiAccessories": [
+    {
+      "id": "1",
+      "name": "wiimote",
+      "alias": "",
+      "description": ""
+    },
+    {
+      "id": "2",
+      "name": "nunchuk",
+      "alias": "",
+      "description": ""
+    },
+    {
+      "id": "3",
+      "name": "motionplus",
+      "alias": "",
+      "description": ""
+    },
+    {
+      "id": "4",
+      "name": "classiccontroller",
+      "alias": "Wii Classic Controller",
+      "description": ""
+    },
+    {
+      "id": "5",
+      "name": "balanceboard",
+      "alias": "",
+      "description": ""
+    },
+    {
+      "id": "6",
+      "name": "zapper",
+      "alias": "",
+      "description": ""
+    },
+    {
+      "id": "7",
+      "name": "wheel",
+      "alias": "",
+      "description": ""
+    },
+    {
+      "id": "8",
+      "name": "gamecubecontroller",
+      "alias": "gamecube",
+      "description": "allows to play some GameCube games on a Wii console. Note that not every Wii Console can run GameCube games depending on the hardware"
+    },
+    {
+      "id": "9",
+      "name": "guitar",
+      "alias": "",
+      "description": "Used for band games such as Guitar Hero"
+    },    
+    {
+      "id": "10",
+      "name": "drums",
+      "alias": "",
+      "description": "Used for band games such as Guitar Hero"
+    },
+    {
+      "id": "11",
+      "name": "dancepad",
+      "alias": "",
+      "description": "Used for band games such as Dance Dance Revolution"
+    },
+    {
+      "id": "11",
+      "name": "microphone",
+      "alias": "",
+      "description": "Used for band games such as Disney's Sing It"
+    }
+  ]
+}
