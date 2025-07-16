@@ -34,12 +34,13 @@
 /* Stijl voor elke kaart */
 .game-card {
   width: 180px; /* of 20%, afhankelijk van stijlvoorkeur */
-  border: 1px solid #ccc;
+  /* border: 3px solid #ccc; */
   border-radius: 10px;
   overflow: hidden;
-  background-color: #236e8b;
+  background-color: rgba(0, 0, 0, 0.1);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  color: white;
 }
 
 .game-card__cover {

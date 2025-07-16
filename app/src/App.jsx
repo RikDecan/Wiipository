@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import GameCard from './components/GameCard';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import GameList from './components/GameList'; // waar je je lijst toont
+import DetailsPage from './pages/DetailsPage';
 
 const App = () => {
-  const [games, setGames] = useState([]);
-
-  useEffect(() => {
-    fetch('/WiiGames.json')
-      .then((res) => res.json())
-      .then((data) => setGames(data.WiiGames));
-  }, []);
-
   return (
-    <div className="game-list">
-      {games.map((game) => (
-        <GameCard key={game.gameId} game={game} />
-      ))}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<GameList />} />
+        <Route path="/DetailsPage/:gameId" element={<DetailsPage />} />
+      </Routes>
+    </Router>
   );
 };
 
