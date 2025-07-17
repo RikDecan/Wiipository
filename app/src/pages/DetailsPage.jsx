@@ -14,17 +14,19 @@ const DetailsPage = () => {
       });
   }, [gameId]);
 
-  if (!game) return <p>Game niet gevonden...</p>;
+  if (!game) return <p>Game not found...</p>;
 
   return (
     <div>
       <h3>{game.title}</h3>
       <img src={`/2D_covers/${game.gameId}.png`} alt={game.title} style={{ width: 200 }} />
-      <p><strong>Summary:</strong> <br /><br />{game.summary}</p>
-      <p><strong>Genre:</strong> {game.genre}</p>
-      <p><strong>Maximum local players:</strong> {game.maxPlayers}</p>
-      <p><strong>Release year:</strong> {game.releaseYear}</p>
-      <p><strong>In library:</strong> {game.inLibrary ? 'Ja' : 'Nee'}</p>
+      <img src={`/3D_covers/${game.gameId}.png`} alt={game.title} style={{ width: 200 }} />
+      <p><strong>Summary: </strong> <br /><br />{game.summary}</p>
+      <p><strong>Genre: </strong> {game.genre}</p>
+      <p><strong>Maximum local players: </strong> {game.maxPlayers}</p>
+      <p><strong>Release year: </strong> {game.releaseYear}</p>
+      <p><strong>In library: </strong> {game.inLibrary ? 'Ja' : 'Nee'}</p>
+      <p><strong>Comment: </strong>{game.comment}</p>
     </div>
   );
 };
