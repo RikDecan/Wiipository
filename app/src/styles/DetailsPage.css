@@ -1,0 +1,230 @@
+/* DetailsPage.css */
+
+.details-container {
+  width: 100%;
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  min-height: 100vh;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  border-bottom: 2px solid #4a90e2;
+}
+
+.game-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #4a90e2, #7b68ee, #ff6b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(74, 144, 226, 0.5);
+}
+
+.covers-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.cover-container {
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  /* background: rgba(255, 255, 255, 0.1); */
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+}
+
+.cover-container:hover {
+  transform: translateY(-10px) scale(1.05);
+  /* box-shadow: 0 20px 40px rgba(74, 144, 226, 0.4); */
+}
+
+.cover-image {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  transition: filter 0.3s ease;
+}
+
+.cover-container:hover .cover-image {
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.cover-label {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #b0c4de;
+  font-weight: 500;
+}
+
+#gameDisk {
+  transition: transform 2s ease-in-out;
+  display: inline-block; /* Zorgt dat transform werkt zoals verwacht */
+}
+
+#gameDisk:hover {
+  transform: rotate(360deg);
+}
+
+.game-info {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid #4a90e2;
+  transition: all 0.3s ease;
+}
+
+.info-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateX(5px);
+  border-left-color: #7b68ee;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #4a90e2;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-value {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #e6e6fa;
+}
+
+.summary-section {
+  grid-column: 1 / -1;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #ff6b6b;
+  margin-top: 1rem;
+}
+
+.summary-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #f0f0f0;
+  text-align: justify;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.status-yes {
+  background: linear-gradient(45deg, #00c851, #007e33);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 200, 81, 0.4);
+}
+
+.status-no {
+  background: linear-gradient(45deg, #ff4444, #cc0000);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+}
+
+.genre-tag {
+  background: linear-gradient(45deg, #7b68ee, #9370db);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: 600;
+  text-transform: capitalize;
+  box-shadow: 0 4px 15px rgba(123, 104, 238, 0.4);
+}
+
+.loading-message {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #4a90e2;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  margin-top: 2rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .details-container {
+    padding: 1rem;
+  }
+  
+  .game-title {
+    font-size: 2rem;
+  }
+  
+  .covers-section {
+    gap: 1rem;
+  }
+  
+  .cover-image {
+    width: 150px;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .game-info {
+    padding: 1.5rem;
+  }
+}
+
+/* Animaties */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.details-container * {
+  animation: fadeIn 0.6s ease-out;
+}
