@@ -31,16 +31,34 @@
   padding: 20px;
 }
 
+/* Container voor elke kaart met toggle button */
+.game-card-container {
+  position: relative;
+  width: 180px;
+}
+
+/* Link styling */
+.game-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 /* Stijl voor elke kaart */
 .game-card {
-  width: 180px; /* of 20%, afhankelijk van stijlvoorkeur */
-  /* border: 3px solid #ccc; */
+  width: 100%;
   border-radius: 10px;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.1);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .game-card__cover {
@@ -52,4 +70,77 @@
 .game-card__title {
   font-size: 16px;
   padding: 10px;
+}
+
+/* Toggle button styling */
+.library-toggle-btn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 8px;
+  aspect-ratio: 1 / 1;
+  border: none;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Green button for adding to library */
+.library-toggle-btn.not-in-library {
+  background: linear-gradient(45deg, #28a745, #20c997);
+  color: white;
+}
+
+.library-toggle-btn.not-in-library:hover {
+  background: linear-gradient(45deg, #218838, #1aa085);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+/* Red button for removing from library */
+.library-toggle-btn.in-library {
+  background: linear-gradient(45deg, #dc3545, #e74c3c);
+  color: white;
+}
+
+.library-toggle-btn.in-library:hover {
+  background: linear-gradient(45deg, #c82333, #dc2626);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+}
+
+/* Active state */
+.library-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* No games found styling */
+.no-games-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 3rem;
+  text-align: center;
+  color: #b0c4de;
+}
+
+.no-games-found img {
+  max-width: 200px;
+  margin-bottom: 1rem;
+  filter: grayscale(0.3);
+}
+
+.no-games-found p {
+  font-size: 1.2rem;
+  color: #6c757d;
 }

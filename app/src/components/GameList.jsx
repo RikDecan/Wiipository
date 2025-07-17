@@ -13,6 +13,19 @@ const GameList = () => {
       .then((data) => setGames(data.WiiGames));
   }, []);
 
+  const handleToggleLibrary = (gameId, newInLibraryStatus) => {
+    setGames(prevGames => 
+      prevGames.map(game => 
+        game.gameId === gameId 
+          ? { ...game, inLibrary: newInLibraryStatus }
+          : game
+      )
+    );
+    
+    // Hier kun je later een API call toevoegen om de verandering op te slaan
+    console.log(`Game ${gameId} ${newInLibraryStatus ? 'added to' : 'removed from'} library`);
+  };
+
   const filteredGames = games.filter((game) => {
     const titleMatch = game.title.toLowerCase().includes(searchTerm.toLowerCase());
     const maxPlayersMatch = maxPlayers === '' || game.maxPlayers === parseInt(maxPlayers);
@@ -48,9 +61,18 @@ const GameList = () => {
       {/* 🧩 Resultaten */}
       <div className="game-list">
         {filteredGames.map((game) => (
-          <GameCard key={game.gameId} game={game} />
+          <GameCard 
+            key={game.gameId} 
+            game={game} 
+            onToggleLibrary={handleToggleLibrary}
+          />
         ))}
-        {filteredGames.length === 0 && <p>Game not found... <br /><img src="/sadMario.png" alt="sad" /></p>}
+        {filteredGames.length === 0 && (
+          <div className="no-games-found">
+            <img src="/sadMario.png" alt="No games found" />
+            <p>Game not found...</p>
+          </div>
+        )}
       </div>
     </div>
   );
