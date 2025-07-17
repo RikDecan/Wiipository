@@ -50,7 +50,7 @@ const GameList = () => {
         {filteredGames.map((game) => (
           <GameCard key={game.gameId} game={game} />
         ))}
-        {filteredGames.length === 0 && <p>Geen resultaten gevonden.</p>}
+        {filteredGames.length === 0 && <p>Game not found... <br /><img src="/sadMario.png" alt="sad" /></p>}
       </div>
     </div>
   );
