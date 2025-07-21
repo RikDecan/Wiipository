@@ -5,22 +5,39 @@ import '../styles/DetailsPage.css';
 const DetailsPage = () => {
   const { gameId } = useParams();
   const [game, setGame] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
-    fetch('/WiiGames.json')
-      .then((res) => res.json())
+    setLoading(true);
+    fetch(`http://localhost:3001/api/games/${gameId}`)
+      .then((res) => {
+        if (res.status === 404) {
+          setNotFound(true);
+          return null;
+        }
+        return res.json();
+      })
       .then((data) => {
-        const found = data.WiiGames.find((g) => g.gameId === gameId);
-        setGame(found);
+        if (data?.success) {
+          setGame(data.game);
+        }
+      })
+      .catch((err) => {
+        console.error("API error:", err);
+        setNotFound(true);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [gameId]);
 
-  if (!game) {
-    return (
-      <div className="details-container">
-        <div className="loading-message">Game not found...</div>
-      </div>
-    );
+  if (loading) {
+    return <div className="details-container"><div className="loading-message">Loading game...</div></div>;
+  }
+
+  if (notFound || !game) {
+    return <div className="details-container"><div className="loading-message">Game not found...</div></div>;
   }
 
   return (
@@ -30,39 +47,24 @@ const DetailsPage = () => {
       </div>
 
       <div className="covers-section">
-        <div className="cover-container">
-          <img 
-            src={`/2D_covers/${game.gameId}.png`} 
-            alt={`${game.title} 2D Cover`} 
-            className="cover-image"
-          />
-          <div className="cover-label"></div>
-        </div>
-        <div className="cover-container">
-          <img 
-            src={`/3D_covers/${game.gameId}.png`} 
-            alt={`${game.title} 3D Cover`} 
-            className="cover-image"
-          />
-          <div className="cover-label"></div>
-        </div>
-        <div className="cover-container" id='gameDisk'>
-          <img 
-            src={`/Disc_covers/${game.gameId}.png`} 
-            alt={`${game.title} Disc`} 
-            className="cover-image"
-          />
-          <div className="cover-label"></div>
-        </div>
+        {['2D', '3D', 'Disc'].map((type) => (
+          <div className="cover-container" key={type} id={type === 'Disc' ? 'gameDisk' : undefined}>
+            <img
+              src={`/${type}_covers/${game.gameId}.png`}
+              alt={`${game.title} ${type} Cover`}
+              className="cover-image"
+              onError={(e) => (e.target.src = `/${type}_covers/default.png`)}
+            />
+            <div className="cover-label">{type}</div>
+          </div>
+        ))}
       </div>
 
       <div className="game-info">
         <div className="info-grid">
           <div className="info-item">
             <div className="info-label">Genre</div>
-            <div className="info-value">
-              <span className="genre-tag">{game.genre}</span>
-            </div>
+            <div className="info-value"><span className="genre-tag">{game.genre}</span></div>
           </div>
 
           <div className="info-item">
@@ -91,10 +93,12 @@ const DetailsPage = () => {
             </div>
           )}
 
-          <div className="summary-section">
-            <div className="info-label">Summary</div>
-            <div className="summary-text">{game.summary}</div>
-          </div>
+          {game.summary && (
+            <div className="summary-section">
+              <div className="info-label">Summary</div>
+              <div className="summary-text">{game.summary}</div>
+            </div>
+          )}
         </div>
       </div>
     </div>

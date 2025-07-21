@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-container">
+      {/* <div className="navbar-container">
         <div className="navbar-brand">
           <Link to="/" className="brand-link">
             🎮 Wii Games Collection
@@ -28,7 +28,7 @@ const Navbar = () => {
             My Library
           </Link>
         </div>
-      </div>
+      </div> */}
     </nav>
   );
 };

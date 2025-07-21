@@ -58,6 +58,7 @@ const GameList = () => {
           display: "flex",
           gap: "1rem",
           flexWrap: "wrap",
+          position: "sticky",
         }}
       >
         <input
@@ -71,7 +72,7 @@ const GameList = () => {
           onChange={(e) => setMaxPlayers(e.target.value)}
         >
           <option value="">Local players (all)</option>
-          <option value="1+">1 player</option>
+          <option value="1">1 player</option>
           <option value="2+">2 or more players</option>
           <option value="3+">3 or more players</option>
           <option value="4">4 exact players</option>
