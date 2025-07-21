@@ -1,2 +1,2 @@
 # Wiipository
-WebTool to manage your Nintendo Wii Games!
+Webtool to manage your Nintendo Wii Games!
