@@ -11,7 +11,7 @@ const JSON_FILE_PATH = path.join(__dirname, './data/WiiGames.json');
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
   credentials: true
 }));
 app.use(express.json());

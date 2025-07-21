@@ -7,12 +7,21 @@ const GameList = () => {
   const [maxPlayers, setMaxPlayers] = useState("");
   const [inLibraryOnly, setInLibraryOnly] = useState(false);
 
+  // ✅ Haal games op via de API
   useEffect(() => {
-    fetch("/WiiGames.json")
+    fetch("http://localhost:3001/api/games")
       .then((res) => res.json())
-      .then((data) => setGames(data.WiiGames));
+      .then((data) => {
+        if (data.success) {
+          setGames(data.games);
+        } else {
+          console.error("Failed to fetch games:", data.error);
+        }
+      })
+      .catch((err) => console.error("API error:", err));
   }, []);
 
+  // ✅ Update lokale state na API-update via GameCard
   const handleToggleLibrary = (gameId, newInLibraryStatus) => {
     setGames((prevGames) =>
       prevGames.map((game) =>
@@ -20,13 +29,6 @@ const GameList = () => {
           ? { ...game, inLibrary: newInLibraryStatus }
           : game
       )
-    );
-
-    // Hier kun je later een API call toevoegen om de verandering op te slaan
-    console.log(
-      `Game ${gameId} ${
-        newInLibraryStatus ? "added to" : "removed from"
-      } library`
     );
   };
 
@@ -91,7 +93,7 @@ const GameList = () => {
           <GameCard
             key={game.gameId}
             game={game}
-            onToggleLibrary={handleToggleLibrary}
+            onLibraryUpdate={handleToggleLibrary}
           />
         ))}
         {filteredGames.length === 0 && (
