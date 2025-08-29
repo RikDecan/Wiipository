@@ -72,13 +72,13 @@
 }
 
 #gameDisk {
-  transition: transform 2s ease-in-out;
+  /* transition: transform 2s ease-in-out; */
   display: inline-block; /* Zorgt dat transform werkt zoals verwacht */
 }
 
-#gameDisk:hover {
+/* #gameDisk:hover {
   transform: rotate(360deg);
-}
+} */
 
 .game-info {
   background: rgba(255, 255, 255, 0.05);
