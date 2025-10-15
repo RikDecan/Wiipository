@@ -6,9 +6,11 @@ const GameList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [maxPlayers, setMaxPlayers] = useState("");
   const [inLibraryOnly, setInLibraryOnly] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // ✅ Haal games op via de API
   useEffect(() => {
+    setIsLoading(true);
     fetch("http://localhost:3001/api/games")
       .then((res) => res.json())
       .then((data) => {
@@ -18,7 +20,10 @@ const GameList = () => {
           console.error("Failed to fetch games:", data.error);
         }
       })
-      .catch((err) => console.error("API error:", err));
+      .catch((err) => console.error("API error:", err))
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   // ✅ Update lokale state na API-update via GameCard
@@ -90,18 +95,27 @@ const GameList = () => {
 
       {/* 🧩 Resultaten */}
       <div className="game-list">
-        {filteredGames.map((game) => (
-          <GameCard
-            key={game.gameId}
-            game={game}
-            onLibraryUpdate={handleToggleLibrary}
-          />
-        ))}
-        {filteredGames.length === 0 && (
-          <div className="no-games-found">
-            <img src="/sadMario.png" alt="No games found" />
-            <p>Game not found...</p>
+        {isLoading ? (
+          <div className="loading-spinner">
+            <div className="spinner"></div>
+            <p>Loading games...</p>
           </div>
+        ) : (
+          <>
+            {filteredGames.map((game) => (
+              <GameCard
+                key={game.gameId}
+                game={game}
+                onLibraryUpdate={handleToggleLibrary}
+              />
+            ))}
+            {filteredGames.length === 0 && (
+              <div className="no-games-found">
+                <img src="/sadMario.png" alt="No games found" />
+                <p>Game not found...</p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
