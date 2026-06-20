@@ -6,12 +6,12 @@ const LibraryPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/WiiGames.json')
+    fetch('/api/library')
       .then((res) => res.json())
       .then((data) => {
-        // Filter alleen games waar inLibrary === true
-        const gamesInLibrary = data.WiiGames.filter(game => game.inLibrary === true);
-        setLibraryGames(gamesInLibrary);
+        if (data.success) {
+          setLibraryGames(data.games);
+        }
         setLoading(false);
       })
       .catch((error) => {

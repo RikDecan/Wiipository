@@ -11,7 +11,7 @@ const GameList = () => {
   // ✅ Haal games op via de API
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:3001/api/games")
+    fetch("/api/games")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

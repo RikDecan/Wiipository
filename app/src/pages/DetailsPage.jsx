@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import '../styles/DetailsPage.css';
 
 const DetailsPage = () => {
@@ -10,7 +10,7 @@ const DetailsPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3001/api/games/${gameId}`)
+    fetch(`/api/games/${gameId}`)
       .then((res) => {
         if (res.status === 404) {
           setNotFound(true);
@@ -42,13 +42,15 @@ const DetailsPage = () => {
 
   return (
     <div className="details-container">
+      <Link to="/" className="details-back">&larr; Back to games</Link>
+
       <div className="game-header">
         <h1 className="game-title">{game.title}</h1>
       </div>
 
       <div className="covers-section">
         {['2D', '3D', 'Disc'].map((type) => (
-          <div className="cover-container" key={type} id={type === 'Disc' ? 'gameDisk' : undefined}>
+          <div className="cover-container" key={type}>
             <img
               src={`/${type}_covers/${game.gameId}.png`}
               alt={`${game.title} ${type} Cover`}

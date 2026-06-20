@@ -12,7 +12,7 @@ const GameCard = ({ game, onLibraryUpdate }) => {
     const newStatus = !game.inLibrary;
 
     try {
-      const response = await fetch(`http://localhost:3001/api/games/${game.gameId}/library`, {
+      const response = await fetch(`/api/games/${game.gameId}/library`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
